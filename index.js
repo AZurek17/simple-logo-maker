@@ -9,7 +9,13 @@ const questions = [
     {
         type: "input",
         message: "Enter up to 3 characters for your logo",
-        name: "initals"
+        name: "initals",
+        validate: function (input){
+            if (input.length > 3) {
+                return "ENTER 3 CHARACTERS MAX";
+            }
+            return true;
+        },
     },
     {
         type: "input",
@@ -32,6 +38,7 @@ const questions = [
         name: "shapecolor"
     },    
 ];
+
 //create svgFile
 function writeToFile(fileName, data){
     fs.writeFile(fileName, data,(err) =>
@@ -56,18 +63,15 @@ function generateSvg(data) {
 }
 
 
+
 //start questions
 function init() {
  inquirer
  .prompt (questions)
  .then((response) => {
     console.log(response)
-    if(response.initials.length > 3){
-        console.log("NO MORE THAN 3 letters");
-        init();
-    } else {
-    writeToFile("logo.svg", generateSvg(response));
-    }
+    
+  writeToFile("logo.svg", generateSvg(response));
  })
 }
 
