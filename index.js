@@ -1,7 +1,9 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const shapes = require("./lib/shapes");
-const { log } = require("console");
+const Triangle = require("./lib/shapes");
+const Circle = require("./lib/shapes");
+const Square = require("./lib/shapes");
+
 
 const questions = [
     {
@@ -19,8 +21,8 @@ const questions = [
         message: "Pick a shape",
         name: "shape",
         choices: [
-            "Circle",
             "Triangle",
+            "Circle",
             "Square",
         ],
     },
@@ -30,7 +32,7 @@ const questions = [
         name: "shapecolor"
     },    
 ];
-//create readmeFile
+//create svgFile
 function writeToFile(fileName, data){
     fs.writeFile(fileName, data,(err) =>
     err ? console.log(err) : console.log('Generated logo.svg'))
@@ -38,6 +40,15 @@ function writeToFile(fileName, data){
 
 function generateSvg(data) {
     return `
+    <svg version="1.1"
+        width="300" height="200"
+        xmlns="http://www.w3.org/2000/svg">
+
+    <rect width="100%" height="100% fill="white"/>
+
+    ${data.shape}
+
+    ${data.initials}
     
 
 
@@ -45,13 +56,18 @@ function generateSvg(data) {
 }
 
 
-//start function
+//start questions
 function init() {
  inquirer
  .prompt (questions)
  .then((response) => {
     console.log(response)
+    if(response.initials.length > 3){
+        console.log("NO MORE THAN 3 letters");
+        init();
+    } else {
     writeToFile("logo.svg", generateSvg(response));
+    }
  })
 }
 
