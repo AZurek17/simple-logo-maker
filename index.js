@@ -1,5 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const Shape = require("./lib/shapes");
 const Triangle = require("./lib/shapes");
 const Circle = require("./lib/shapes");
 const Square = require("./lib/shapes");
@@ -45,24 +46,47 @@ function writeToFile(fileName, data){
     err ? console.log(err) : console.log('Generated logo.svg'))
 }
 
+
+        
+
 function generateSvg(data) {
-    return `
-    <svg version="1.1"
-        width="300" height="200"
-        xmlns="http://www.w3.org/2000/svg">
-
-    <rect width="100%" height="100% fill="white"/>
-
-    ${data.shape}
-
-    ${data.initials}
-    
-
-
-    `;
+    // let shapePick
+        if (data.shape === "Triangle") {          
+            return `<svg version="1.1"
+            width="300" height="200"
+            xmlns="http://www.w3.org/2000/svg">
+            
+            <polygon points="150 10, 50 145, 250 145" fill="${data.shapecolor}"/>
+            
+            <text x="145" y="125" font-size="60" text-anchor="middle" fill="${data.initalscolor}">${data.initals}</text>
+            </svg>
+            `
+        }
+        else if (data.shape === "Circle") {
+            return `<svg version="1.1"
+            width="300" height="200"
+            xmlns="http://www.w3.org/2000/svg">
+            
+            <circle cx="145" cy="100" r="80" fill="${data.shapecolor}"/>
+            
+            <text x="145" y="125" font-size="60" text-anchor="middle" fill="${data.initalscolor}">${data.initals}</text>
+            </svg>
+            `
+        }
+        else if (data.shape === "Square") {
+            return `<svg version="1.1"
+            width="300" height="200"
+            xmlns="http://www.w3.org/2000/svg">
+            
+            <rect x="65" y="50" width="165" height="115" fill="${data.shapecolor}"/>
+            
+            <text x="145" y="125" font-size="60" text-anchor="middle" fill="${data.initalscolor}">${data.initals}</text>
+            </svg>
+            `
+        }
 }
 
-
+// ${data.shape()}
 
 //start questions
 function init() {
@@ -71,7 +95,7 @@ function init() {
  .then((response) => {
     console.log(response)
     
-  writeToFile("logo.svg", generateSvg(response));
+ writeToFile("logo.svg", generateSvg(response));
  })
 }
 
