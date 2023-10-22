@@ -90,7 +90,7 @@ function init() {
  .then((response) => {
     console.log(response)
     
- writeToFile("logo.svg", generateSvg(response));
+ writeToFile("./examples/" + response.shape + "-logo.svg", generateSvg(response));
  })
 }
 
