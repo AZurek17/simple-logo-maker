@@ -1,10 +1,9 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const Shape = require("./lib/shapes");
-const Triangle = require("./lib/shapes");
-const Circle = require("./lib/shapes");
-const Square = require("./lib/shapes");
-
+// const Shape = require("./lib/shapes");
+// const Triangle = require("./lib/shapes");
+// const Circle = require("./lib/shapes");
+// const Square = require("./lib/shapes");
 
 const questions = [
     {
@@ -20,7 +19,7 @@ const questions = [
     },
     {
         type: "input",
-        message: "Enter a color for the text",
+        message: "Enter a color or hexadecimal number (Example: #050505) for the text",
         name: "initalscolor"
     },
     {
@@ -35,7 +34,7 @@ const questions = [
     },
     {
         type: "input",
-        message: "Enter a color for the shape",
+        message: "Enter a color or hexadecimal number (Example: #050505) for the shape",
         name: "shapecolor"
     },    
 ];
@@ -46,8 +45,6 @@ function writeToFile(fileName, data){
     err ? console.log(err) : console.log('Generated logo.svg'))
 }
 
-
-        
 
 function generateSvg(data) {
     // let shapePick
@@ -85,8 +82,6 @@ function generateSvg(data) {
             `
         }
 }
-
-// ${data.shape()}
 
 //start questions
 function init() {
