@@ -1,11 +1,12 @@
 {
   "name": "simple-logo-maker",
   "version": "1.0.0",
-  "description": "",
+  "description": "[Link to Walkthrough Video](https://watch.screencastify.com/v/JmFmh8sQQOOvlu2DUJvh)",
   "main": "index.js",
   "directories": {
     "example": "examples",
-    "lib": "lib"
+    "lib": "lib",
+    "test": "test"
   },
   "dependencies": {
     "ansi-escapes": "^4.3.2",
@@ -195,9 +196,9 @@
     "source-map-support": "^0.5.13",
     "sprintf-js": "^1.0.3",
     "stack-utils": "^2.0.6",
-    "string_decoder": "^1.3.0",
     "string-length": "^4.0.2",
     "string-width": "^4.2.3",
+    "string_decoder": "^1.3.0",
     "strip-ansi": "^6.0.1",
     "strip-bom": "^4.0.0",
     "strip-final-newline": "^2.0.0",
@@ -229,9 +230,11 @@
     "yargs-parser": "^21.1.1",
     "yocto-queue": "^0.1.0"
   },
+  "devDependencies": {},
   "scripts": {
     "test": "jest"
   },
-  "author": "Andy Zurek",
+  "keywords": [],
+  "author": "",
   "license": "ISC"
 }

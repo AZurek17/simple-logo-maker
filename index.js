@@ -1,9 +1,5 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-// const Shape = require("./lib/shapes");
-// const Triangle = require("./lib/shapes");
-// const Circle = require("./lib/shapes");
-// const Square = require("./lib/shapes");
 
 const questions = [
     {
@@ -45,9 +41,8 @@ function writeToFile(fileName, data){
     err ? console.log(err) : console.log('Generated logo.svg'))
 }
 
-
+//conditional based on list choices 
 function generateSvg(data) {
-    // let shapePick
         if (data.shape === "Triangle") {          
             return `<svg version="1.1"
             width="300" height="200"
@@ -83,7 +78,7 @@ function generateSvg(data) {
         }
 }
 
-//start questions
+//start user questions
 function init() {
  inquirer
  .prompt (questions)
