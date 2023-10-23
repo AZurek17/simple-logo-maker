@@ -1,6 +1,6 @@
 # simple-logo-maker ![GitHub License Badge](https://img.shields.io/badge/License-MIT-yellow)
 
-[Link to Walkthrough Video](https://watch.screencastify.com/v/JmFmh8sQQOOvlu2DUJvh)
+[Link to Walkthrough Video](https://watch.screencastify.com/v/yMwTUdWyrWUHGPscPe35)
 
  ### Technology Used:
  * node - https://nodejs.org/en/about
