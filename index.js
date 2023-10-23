@@ -1,5 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const {Triangle,Circle,Square} = require("./lib/shapes.js");
+const SVG = require("./lib/svg.js");
 
 const questions = [
     {
@@ -43,39 +45,20 @@ function writeToFile(fileName, data){
 
 //conditional based on list choices 
 function generateSvg(data) {
-        if (data.shape === "Triangle") {          
-            return `<svg version="1.1"
-            width="300" height="200"
-            xmlns="http://www.w3.org/2000/svg">
-            
-            <polygon points="150 10, 50 145, 250 145" fill="${data.shapecolor}"/>
-            
-            <text x="145" y="125" font-size="60" text-anchor="middle" fill="${data.initalscolor}">${data.initals}</text>
-            </svg>
-            `
+        let newShape = "";
+
+        if (data.shape === "Triangle") {    
+        newShape = new Triangle(data.shapecolor)
         }
         else if (data.shape === "Circle") {
-            return `<svg version="1.1"
-            width="300" height="200"
-            xmlns="http://www.w3.org/2000/svg">
-            
-            <circle cx="145" cy="100" r="80" fill="${data.shapecolor}"/>
-            
-            <text x="145" y="125" font-size="60" text-anchor="middle" fill="${data.initalscolor}">${data.initals}</text>
-            </svg>
-            `
+        newShape = new Circle(data.shapecolor)  
         }
         else if (data.shape === "Square") {
-            return `<svg version="1.1"
-            width="300" height="200"
-            xmlns="http://www.w3.org/2000/svg">
-            
-            <rect x="65" y="50" width="165" height="115" fill="${data.shapecolor}"/>
-            
-            <text x="145" y="125" font-size="60" text-anchor="middle" fill="${data.initalscolor}">${data.initals}</text>
-            </svg>
-            `
+        newShape = new Square(data.shapecolor)
         }
+
+        const newSvg = new SVG(data.initalscolor,data.initals, newShape)
+        return newSvg.render()
 }
 
 //start user questions
